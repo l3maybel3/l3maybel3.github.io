@@ -3,470 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hong Kong 4D3N Detailed Journal (English)</title>
+    <title>Hong Kong Trip Planner | 4D3N</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Kanit -->
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: 'Prompt', sans-serif;
-            background-color: #fff1f2;
-            background-image: radial-gradient(#fb7185 1px, transparent 1px);
-            background-size: 24px 24px;
+            font-family: 'Kanit', sans-serif;
+            background-color: #f8fafc;
         }
-        h1, h2, h3, .handwritten {
-            font-family: 'Mali', cursive;
+        .hero-bg {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1529126667123-85f0b5d9bc37?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
         }
-        .timeline-line {
-            position: absolute;
-            left: 28px;
-            top: 25px;
-            bottom: 25px;
-            width: 4px;
-            border-left: 4px dashed #cbd5e1;
-            z-index: 0;
+        .timeline-border {
+            border-left: 3px dashed #cbd5e1;
+            margin-left: 1.25rem;
         }
-        .card-shadow {
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
         }
-        .card-shadow:hover {
-            transform: translateY(-2px);
-            box-shadow: 6px 6px 0px rgba(0,0,0,0.12);
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
-        .page-container {
-            border: 4px solid #fff;
-            box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+        .booking-placeholder {
+            background-color: #e2e8f0;
+            border: 2px dashed #94a3b8;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            color: #475569;
+            font-weight: 500;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
         }
-        .time-badge {
-            font-family: 'Mali', cursive;
-            border: 2px solid white;
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.05);
-        }
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-right: 4px;
-            margin-bottom: 2px;
-        }
-        .tag-transport { background-color: #e2e8f0; color: #475569; }
-        .tag-food { background-color: #ffedd5; color: #c2410c; }
-        .tag-tip { background-color: #dcfce7; color: #15803d; }
     </style>
 </head>
-<body class="p-4 md:p-8 space-y-12">
+<body class="text-slate-800 pb-20">
 
-    <!-- DAY 1: RED THEME -->
-    <div class="max-w-3xl mx-auto bg-white rounded-[2rem] overflow-hidden page-container transform rotate-1 md:rotate-0">
-        <div class="bg-rose-500 p-6 md:p-8 text-white relative overflow-hidden">
-            <div class="absolute -right-6 -top-6 text-rose-400 opacity-50 transform rotate-12">
-                <i class="fas fa-torii-gate text-9xl"></i>
+    <!-- Hero Section -->
+    <header class="hero-bg text-white py-16 px-6 text-center shadow-lg">
+        <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase shadow-sm">28 Feb - 3 Mar 2026</span>
+        <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-3">Hong Kong Trip 4D3N</h1>
+        <p class="text-lg text-slate-200 max-w-2xl mx-auto">Temple Hopping • Disneyland • Michelin Dining</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="flex overflow-x-auto hide-scroll py-3 gap-2">
+                <button onclick="showTab('day1')" id="btn-day1" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white">Day 1</button>
+                <button onclick="showTab('day2')" id="btn-day2" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Day 2</button>
+                <button onclick="showTab('day3')" id="btn-day3" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Day 3</button>
+                <button onclick="showTab('day4')" id="btn-day4" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Day 4</button>
+                <button onclick="showTab('bookings')" id="btn-bookings" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 border border-amber-300"><i class="fas fa-ticket-alt mr-2"></i>Tickets & Bookings</button>
             </div>
-            <div class="relative z-10 flex justify-between items-end">
+        </div>
+    </div>
+
+    <!-- Content Container -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+
+        <!-- ================= DAY 1 ================= -->
+        <div id="day1" class="tab-content animate-fade-in">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-blue-100 text-blue-600 p-3 rounded-xl"><i class="fas fa-plane-arrival fa-xl"></i></div>
                 <div>
-                    <span class="bg-white text-rose-600 px-3 py-1 rounded-full text-sm font-bold tracking-wider mb-2 inline-block shadow-sm">FRIDAY</span>
-                    <h1 class="text-4xl md:text-5xl font-bold mb-1 text-shadow">DAY 01</h1>
-                    <p class="text-rose-100 text-lg handwritten">Temple Hopping & Foodie Adventure (Kowloon)</p>
-                </div>
-                <div class="text-right hidden md:block">
-                    <p class="text-sm opacity-80">Arrival: HB296 (05:35)</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="p-4 md:p-8 bg-rose-50 relative">
-            <div class="timeline-line border-rose-300"></div>
-
-            <!-- Item -->
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-rose-200 flex items-center justify-center text-rose-500 shadow-md">
-                    <i class="fas fa-plane-arrival text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-rose-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-xs font-bold time-badge">05:35</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Landing & Check-in</h3>
-                    </div>
-                    <div class="space-y-2 text-sm text-gray-600">
-                        <p><span class="tag tag-transport">BUS A21</span> From Ground Transport Centre to <strong>Cameron Rd. (No.13)</strong></p>
-                        <p>🏨 <strong>Joyce House:</strong> Drop luggage at Haiphong Mansion</p>
-                    </div>
+                    <h2 class="text-2xl font-bold">Saturday, 28 Feb</h2>
+                    <p class="text-slate-500">Temple Hopping & Foodie Adventure in Kowloon</p>
                 </div>
             </div>
 
-            <!-- Item -->
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-rose-200 flex items-center justify-center text-rose-500 shadow-md">
-                    <i class="fas fa-bowl-rice text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-rose-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-xs font-bold time-badge">08:30</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Master Congee (大師傅粥品)</h3>
+            <div class="relative timeline-border pb-8">
+                
+                <!-- Timeline Item -->
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-blue-600 block mb-1">05:35 - 08:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-suitcase-rolling mr-2 text-slate-400"></i>Landing & Check-in</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-2">Flight <strong>HB296</strong> arrives in Hong Kong at 05:35 AM.</p>
+                        <ul class="text-sm text-slate-600 list-disc pl-5 space-y-1">
+                            <li>Take Bus <strong class="text-blue-600">A21</strong> to Stop 13 (Cameron Rd.)</li>
+                            <li>Drop luggage at <strong>Joyce House</strong> (Haiphong Mansion)</li>
+                        </ul>
                     </div>
-                    <div class="text-sm text-gray-600">
-                        <p class="mb-1"><i class="fas fa-location-dot text-rose-400 mr-1"></i> Cameron Rd. (5 min walk)</p>
-                        <p><span class="tag tag-food">Must Eat</span> Liver Congee & Chinese Doughnut</p>
-                    </div>
                 </div>
-            </div>
 
-            <!-- Item -->
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-rose-200 flex items-center justify-center text-rose-500 shadow-md">
-                    <i class="fas fa-gopuram text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-rose-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-xs font-bold time-badge">09:30</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Temple Mission (2 Temples)</h3>
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-orange-600 block mb-1">08:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-bowl-rice mr-2 text-orange-400"></i>Breakfast: Master Congee</h3>
+                        <p class="text-slate-600 text-sm">Fuel up with smooth liver congee and Chinese doughnut (5-7 min walk from hotel)</p>
                     </div>
-                    <ul class="text-sm text-gray-600 space-y-3">
-                        <li class="flex items-start">
-                            <span class="mr-2 mt-1 text-rose-500">❶</span>
-                            <div>
-                                <strong class="text-gray-800">Hung Hom Kwun Yum Temple</strong> (Loan/Money)<br>
-                                <span class="tag tag-transport">MTR</span> Whampoa Exit B -> Walk via Station Lane
+                </div>
+
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-red-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-red-600 block mb-1">09:30 - 12:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-vihara mr-2 text-red-400"></i>Temple Hopping (2 Famous Temples)</h3>
+                        <div class="space-y-3 mt-3">
+                            <div class="bg-slate-50 p-3 rounded-lg text-sm border border-slate-100">
+                                <strong>1. Hung Hom Kwun Yum Temple</strong> (Pray for wealth/loan)<br>
+                                <span class="text-slate-500 text-xs"><i class="fas fa-train mr-1"></i>MTR Whampoa (Exit B)</span>
                             </div>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="mr-2 mt-1 text-rose-500">❷</span>
-                            <div>
-                                <strong class="text-gray-800">Wong Tai Sin Temple</strong> (Love/Health)<br>
-                                <span class="tag tag-transport">MTR</span> Wong Tai Sin Exit B3
+                            <div class="bg-slate-50 p-3 rounded-lg text-sm border border-slate-100">
+                                <strong>2. Wong Tai Sin Temple</strong> (Pray for blessings/red thread for love)<br>
+                                <span class="text-slate-500 text-xs"><i class="fas fa-train mr-1"></i>MTR Wong Tai Sin (Exit B3)</span>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-orange-600 block mb-1">12:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-utensils mr-2 text-orange-400"></i>Lunch: Tai Wai Area</h3>
+                        <p class="text-slate-600 text-sm">Restaurant 王牌・围一叉烧 famous for juicy Char Siu (BBQ Pork) and Crispy Pork</p>
+                        <p class="text-slate-400 text-xs mt-1"><i class="fas fa-train mr-1"></i>MTR Tai Wai (Exit A)</p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-red-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-red-600 block mb-1">13:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-fan mr-2 text-red-400"></i>Che Kung Temple</h3>
+                        <p class="text-slate-600 text-sm">Spin the windmill 3 times to banish bad luck and bring good fortune (walking distance from lunch)</p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8">
+                    <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-indigo-600 block mb-1">16:00 Onwards</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-city mr-2 text-indigo-400"></i>Tsim Sha Tsui & Harbour View</h3>
+                        <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
+                            <li>Try Michelin pan-fried buns at <strong>Cheung Hing Kee</strong> (Lock Rd.)</li>
+                            <li>Stroll along the <strong>Avenue of Stars</strong></li>
+                            <li>Watch <strong>A Symphony of Lights</strong> at 20:00</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= DAY 2 ================= -->
+        <div id="day2" class="tab-content hidden animate-fade-in">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-sky-100 text-sky-600 p-3 rounded-xl"><i class="fas fa-umbrella-beach fa-xl"></i></div>
+                <div>
+                    <h2 class="text-2xl font-bold">Sunday, 1 Mar</h2>
+                    <p class="text-slate-500">Baby Blessing & Hong Kong Island City Views</p>
                 </div>
             </div>
 
-            <!-- Item -->
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-rose-200 flex items-center justify-center text-rose-500 shadow-md">
-                    <i class="fas fa-utensils text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-rose-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-xs font-bold time-badge">12:00</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Tai Wai: BBQ Pork Rice</h3>
-                    </div>
-                    <div class="text-sm text-gray-600">
-                        <p class="mb-1"><span class="tag tag-transport">MTR</span> Tai Wai Station Exit A</p>
-                        <p>🍽️ Restaurant: <strong>王牌・围一叉烧 (Tai Wai)</strong>: Juicy Char Siu & Crispy Pork</p>
+            <div class="relative timeline-border pb-8">
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-orange-600 block mb-1">08:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-mug-hot mr-2 text-orange-400"></i>Breakfast: Hop Hing Noodle</h3>
+                        <p class="text-slate-600 text-sm">Congee with minced pork and century egg (Code C02) - Fill up before a long trip!</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Item -->
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-rose-200 flex items-center justify-center text-rose-500 shadow-md">
-                    <i class="fas fa-fan text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-rose-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-rose-100 text-rose-600 px-3 py-1 rounded-full text-xs font-bold time-badge">13:30</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Che Kung Temple</h3>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-2"><i class="fas fa-person-walking text-rose-400"></i> Walk 10-15 mins from restaurant</p>
-                    <div class="bg-rose-50 p-2 rounded-lg border border-rose-100 text-xs text-rose-800">
-                        <i class="fas fa-star mr-1"></i> <strong>Tip:</strong> Spin the wheel 3 times clockwise "To bring good luck & banish bad luck"
-                    </div>
-                </div>
-            </div>
 
-             <!-- Item -->
-             <div class="relative z-10 flex gap-4">
-                <div class="flex-none w-14 h-14 bg-rose-500 rounded-2xl border-4 border-rose-300 flex items-center justify-center text-white shadow-md">
-                    <i class="fas fa-city text-xl"></i>
-                </div>
-                <div class="bg-rose-100 p-4 rounded-2xl w-full card-shadow border border-rose-200">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-white text-rose-600 px-3 py-1 rounded-full text-xs font-bold time-badge">16:00+</span>
-                        <h3 class="font-bold text-rose-800 text-lg">Evening @ TST</h3>
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-sky-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-sky-600 block mb-1">10:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-baby-carriage mr-2 text-sky-400"></i>Repulse Bay (Baby Blessing)</h3>
+                        <p class="text-slate-500 text-xs mb-3"><i class="fas fa-bus mr-1"></i>From Central, take Bus 6, 6X, or 260</p>
+                        <div class="bg-sky-50 p-3 rounded-lg text-sm border border-sky-100 text-sky-800">
+                            <strong>Praying Tips:</strong> Pray to the Laughing Buddha<br>
+                            - For a boy: Rub his belly<br>
+                            - For a girl: Rub the child statue next to him<br>
+                            - Cross the Longevity Bridge for good health
+                        </div>
                     </div>
-                    <ul class="text-sm text-rose-900 space-y-2">
-                        <li>🥟 <strong>Cheung Hing Kee:</strong> Truffle Pan-fried Buns (Lock Rd.)</li>
-                        <li>🌃 <strong>Avenue of Stars:</strong> Walk along the harbour</li>
-                        <li>🎆 <strong>Symphony of Lights:</strong> Starts 20:00 (Free)</li>
-                    </ul>
+                </div>
+
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-pink-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-pink-600 block mb-1">12:30 - 15:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-camera mr-2 text-pink-400"></i>Central City Walk</h3>
+                        <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
+                            <li><strong>Lunch:</strong> Giant prawn wonton noodles at <strong>Tsim Chai Kee</strong></li>
+                            <li><strong>Snack:</strong> Famous Sourdough Egg Tart at <strong>Bakehouse</strong></li>
+                            <li><strong>Photo Spots:</strong> Hollywood Road, Street Art & Tai Kwun</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-green-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-green-600 block mb-1">15:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-mountain mr-2 text-green-400"></i>Victoria Peak</h3>
+                        <p class="text-slate-600 text-sm">Take the Peak Tram for a panoramic view of Victoria Harbour. Recommended free viewpoint: Lion's Pavilion.</p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8">
+                    <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-indigo-600 block mb-1">17:00 Onwards</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-moon mr-2 text-indigo-400"></i>Evening Views & Dinner</h3>
+                        <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
+                            <li>Take the <strong>Star Ferry</strong> across the harbour during sunset</li>
+                            <li>Take a Taxi to <strong>M+ Museum</strong> to photograph the LED facade</li>
+                            <li><strong>Dinner:</strong> <strong>Ki's Roasted Goose</strong> (Mongkok)</li>
+                            <li>Night walk at Temple Street Night Market</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- DAY 2: BLUE THEME -->
-    <div class="max-w-3xl mx-auto bg-white rounded-[2rem] overflow-hidden page-container transform -rotate-1 md:rotate-0">
-        <div class="bg-sky-500 p-6 md:p-8 text-white relative overflow-hidden">
-            <div class="absolute -right-8 -bottom-4 text-sky-400 opacity-50 transform -rotate-12">
-                <i class="fas fa-water text-9xl"></i>
+        <!-- ================= DAY 3 ================= -->
+        <div id="day3" class="tab-content hidden animate-fade-in">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-purple-100 text-purple-600 p-3 rounded-xl"><i class="fab fa-fort-awesome fa-xl"></i></div>
+                <div>
+                    <h2 class="text-2xl font-bold">Monday, 2 Mar</h2>
+                    <p class="text-slate-500">Disneyland Adventure & Late Night Dim Sum</p>
+                </div>
             </div>
-            <div class="relative z-10">
-                <span class="bg-white text-sky-600 px-3 py-1 rounded-full text-sm font-bold tracking-wider mb-2 inline-block shadow-sm">SATURDAY</span>
-                <h1 class="text-4xl md:text-5xl font-bold mb-1 text-shadow">DAY 02</h1>
-                <p class="text-sky-100 text-lg handwritten">Repulse Bay & City Views (Hong Kong Island)</p>
+
+            <div class="relative timeline-border pb-8">
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-orange-600 block mb-1">08:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-bowl-food mr-2 text-orange-400"></i>Breakfast: Dragon Delight Kitchen</h3>
+                        <p class="text-slate-600 text-sm">Have dim sum/congee near TST before heading to the park.</p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-purple-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-purple-600 block mb-1">09:00 - 21:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-purple-200 border-2 hover:shadow-md transition relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-100 rounded-bl-full -z-10"></div>
+                        <h3 class="font-bold text-xl mb-2 text-purple-700"><i class="fas fa-wand-magic-sparkles mr-2"></i>Hong Kong Disneyland</h3>
+                        <p class="text-slate-500 text-xs mb-3"><i class="fas fa-train mr-1"></i>MTR Disneyland Resort Line</p>
+                        <ul class="text-sm text-slate-700 list-disc pl-5 space-y-2 mb-4">
+                            <li><strong>Highlight 1:</strong> New <strong>World of Frozen</strong> (Get Standby Pass on the app)</li>
+                            <li><strong>Highlight 2:</strong> Photo ops at Castle of Magical Dreams</li>
+                            <li><strong>Highlight 3:</strong> Watch <strong>"Momentous"</strong> Nighttime Spectacular at 20:30</li>
+                        </ul>
+                        <div class="bg-red-50 text-red-600 p-2 rounded text-xs font-bold border border-red-100">
+                            <i class="fas fa-exclamation-circle mr-1"></i>After the fireworks, rush to the MTR and get off at Jordan Station (Exit A).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative pl-8">
+                    <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-indigo-600 block mb-1">22:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-dumpling mr-2 text-indigo-400"></i>Late Night Eats (Jordan)</h3>
+                        <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
+                            <li><strong>Savory:</strong> Freshly steamed dim sum at <strong>Dim Sum Here</strong> (Temple St.), open until 1 AM.</li>
+                            <li><strong>Sweet:</strong> Walk 2 mins to <strong>Kai Kai Dessert</strong> for Michelin ginger sweet rice balls.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="p-4 md:p-8 bg-sky-50 relative">
-            <div class="timeline-line border-sky-300"></div>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-sky-200 flex items-center justify-center text-sky-500 shadow-md">
-                    <i class="fas fa-mug-hot text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-sky-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-xs font-bold time-badge">08:00</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Breakfast: Hop Hing</h3>
-                    </div>
-                    <p class="text-sm text-gray-600"><span class="tag tag-food">Menu C02</span> Congee with Preserved Egg & Minced Pork</p>
+        <!-- ================= DAY 4 ================= -->
+        <div id="day4" class="tab-content hidden animate-fade-in">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-amber-100 text-amber-600 p-3 rounded-xl"><i class="fas fa-camera-retro fa-xl"></i></div>
+                <div>
+                    <h2 class="text-2xl font-bold">Tuesday, 3 Mar</h2>
+                    <p class="text-slate-500">Cafe Hopping, Tram Ride & Farewell</p>
                 </div>
             </div>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-sky-200 flex items-center justify-center text-sky-500 shadow-md">
-                    <i class="fas fa-baby-carriage text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-sky-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-xs font-bold time-badge">10:30</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Repulse Bay (Baby Blessing)</h3>
-                    </div>
-                    <p class="text-xs text-gray-500 mb-2">
-                        <span class="tag tag-transport">MTR</span> Central Exit A -> Exchange Square -> <span class="tag tag-transport">BUS 6, 6X, 260</span>
-                    </p>
-                    <div class="bg-sky-50 p-3 rounded-lg border border-sky-100 text-sm text-sky-800">
-                        <strong>🙏 Pray to Budai (Laughing Buddha):</strong><br>
-                        👦 Want a Boy: Rub Buddha's belly<br>
-                        👧 Want a Girl: Rub the child statue next to him<br>
-                        🌉 Cross the <strong>Longevity Bridge</strong> for good health
+            <div class="relative timeline-border pb-8">
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-orange-600 block mb-1">09:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-burger mr-2 text-orange-400"></i>Check-out & Legendary Pork Chop</h3>
+                        <p class="text-slate-600 text-sm">Leave luggage at the hotel. Go eat the legendary pork chop bun/rice at <strong>Wah Heung Yuen</strong> in Haiphong Road Market.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-sky-200 flex items-center justify-center text-sky-500 shadow-md">
-                    <i class="fas fa-camera text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-sky-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-xs font-bold time-badge">12:30</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Central Tour</h3>
-                    </div>
-                    <ul class="text-sm text-gray-600 space-y-2">
-                        <li>🍜 <strong>Tsim Chai Kee:</strong> King Prawn Wonton Noodle (Wellington St.)</li>
-                        <li>🥧 <strong>Bakehouse:</strong> Sourdough Egg Tart (Lyndhurst Tce.)</li>
-                        <li>📸 <strong>Photo:</strong> Hollywood Rd, Graham St Mural, Tai Kwun</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-sky-200 flex items-center justify-center text-sky-500 shadow-md">
-                    <i class="fas fa-tram text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-sky-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-sky-100 text-sky-600 px-3 py-1 rounded-full text-xs font-bold time-badge">15:00</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Victoria Peak</h3>
-                    </div>
-                    <div class="text-sm text-gray-600">
-                        <p class="mb-1"><span class="tag tag-transport">Tram</span> Take Peak Tram at Garden Road</p>
-                        <p>🏞️ <strong>View:</strong> Sky Terrace 428 or Lion's Pavilion (Free)</p>
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-amber-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-amber-600 block mb-1">10:45</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-coffee mr-2 text-amber-400"></i>Cafe Hopping: Kennedy Town</h3>
+                        <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
+                            <li>Take photos at the seaside basketball court.</li>
+                            <li>Coffee at <strong>% Arabica</strong> (Sea view) or <strong>Winstons Coffee</strong>.</li>
+                            <li><strong>Lunch:</strong> Dim sum at Sun Hing (Golden Lava Bun).</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <div class="relative z-10 flex gap-4">
-                <div class="flex-none w-14 h-14 bg-sky-500 rounded-2xl border-4 border-sky-300 flex items-center justify-center text-white shadow-md">
-                    <i class="fas fa-moon text-xl"></i>
-                </div>
-                <div class="bg-sky-100 p-4 rounded-2xl w-full card-shadow border border-sky-200">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-white text-sky-600 px-3 py-1 rounded-full text-xs font-bold time-badge">17:00+</span>
-                        <h3 class="font-bold text-sky-800 text-lg">Evening Vibes</h3>
+                <div class="relative pl-8 mb-8">
+                    <div class="absolute w-4 h-4 bg-teal-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-teal-600 block mb-1">13:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-train-tram mr-2 text-teal-400"></i>Tram Ride & Monster Mansion</h3>
+                        <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
+                            <li>Take the Ding Ding Tram from Kennedy Town to experience the old city vibe.</li>
+                            <li>Go to MTR Tai Koo (Exit B) to take photos at <strong>Monster Mansion</strong> (Transformers filming location) and the red escalators.</li>
+                        </ul>
                     </div>
-                    <ul class="text-sm text-sky-900 space-y-2">
-                        <li>⛴️ <strong>Star Ferry:</strong> Cross back to TST at sunset</li>
-                        <li>🏛️ <strong>M+:</strong> Taxi to West Kowloon for LED facade photos</li>
-                        <li>🍗 <strong>Ki's Roasted Goose:</strong> Roasted Goose Rice (Mongkok)</li>
-                        <li>🛍️ <strong>Night Walk:</strong> Temple St. Market & Mongkok Exit B3</li>
-                    </ul>
                 </div>
-            </div>
 
-        </div>
-    </div>
-
-    <!-- DAY 3: PURPLE THEME -->
-    <div class="max-w-3xl mx-auto bg-white rounded-[2rem] overflow-hidden page-container transform rotate-1 md:rotate-0">
-        <div class="bg-purple-500 p-6 md:p-8 text-white relative overflow-hidden">
-            <div class="absolute -right-4 -top-8 text-purple-400 opacity-50 transform rotate-6">
-                <i class="fab fa-fort-awesome text-9xl"></i>
-            </div>
-            <div class="relative z-10">
-                <span class="bg-white text-purple-600 px-3 py-1 rounded-full text-sm font-bold tracking-wider mb-2 inline-block shadow-sm">SUNDAY</span>
-                <h1 class="text-4xl md:text-5xl font-bold mb-1 text-shadow">DAY 03</h1>
-                <p class="text-purple-100 text-lg handwritten">Disneyland Adventure & Late Night Dim Sum</p>
+                <div class="relative pl-8">
+                    <div class="absolute w-4 h-4 bg-slate-800 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-slate-800 block mb-1">17:15 Onwards</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition bg-slate-50">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-plane-departure mr-2 text-slate-600"></i>Departure</h3>
+                        <ul class="text-sm text-slate-600 space-y-3">
+                            <li>🧳 Pick up luggage at TST and take Bus <strong>A21</strong> to the Airport.</li>
+                            <li>🍜 <strong>Dinner:</strong> Michelin wonton noodles at <strong>Ho Hung Kee</strong> (Airport Arrival Hall).</li>
+                            <li>✈️ Return Flight: <strong>HB295</strong> (22:00). Have a safe flight back to Thailand!</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="p-4 md:p-8 bg-purple-50 relative">
-            <div class="timeline-line border-purple-300"></div>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-purple-200 flex items-center justify-center text-purple-500 shadow-md">
-                    <i class="fas fa-train text-xl"></i>
+        <!-- ================= BOOKINGS (New Section) ================= -->
+        <div id="bookings" class="tab-content hidden animate-fade-in">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="bg-amber-100 text-amber-600 p-3 rounded-xl"><i class="fas fa-ticket-alt fa-xl"></i></div>
+                <div>
+                    <h2 class="text-2xl font-bold">Tickets & Bookings</h2>
+                    <p class="text-slate-500">Flights, Accommodation and Disneyland</p>
                 </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-purple-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-bold time-badge">09:00</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Go to Disney!</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Flight -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden col-span-1 md:col-span-2">
+                    <div class="bg-slate-800 text-white px-5 py-3 flex justify-between items-center">
+                        <h3 class="font-bold"><i class="fas fa-plane mr-2"></i>Flight Tickets (Greater Bay Airlines)</h3>
+                        <span class="text-xs bg-slate-600 px-2 py-1 rounded">Confirmed</span>
                     </div>
-                    <p class="text-sm text-gray-600">
-                        <span class="tag tag-food">Breakfast</span> Dragon Delight Kitchen (TST)<br>
-                        <span class="tag tag-transport">MTR</span> TST -> Lai King -> Sunny Bay -> <strong>Disneyland Resort Line</strong>
-                    </p>
-                </div>
-            </div>
-
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-purple-200 flex items-center justify-center text-purple-500 shadow-md">
-                    <i class="fas fa-wand-magic-sparkles text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-purple-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-bold time-badge">10:00</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Hong Kong Disneyland</h3>
+                    <div class="p-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 text-sm">
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <p class="text-slate-500 mb-1">Departure (28 Feb)</p>
+                                <p class="font-bold text-lg">BKK 01:40 <i class="fas fa-arrow-right text-slate-400 mx-2 text-sm"></i> 05:35 HKG</p>
+                                <p class="text-slate-600">Flight: HB296</p>
+                            </div>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <p class="text-slate-500 mb-1">Return (3 Mar)</p>
+                                <p class="font-bold text-lg">HKG 22:00 <i class="fas fa-arrow-right text-slate-400 mx-2 text-sm"></i> 23:59 BKK</p>
+                                <p class="text-slate-600">Flight: HB295</p>
+                            </div>
+                        </div>
+                        <div class="booking-placeholder p-0">
+                            <!-- ใส่รูปตั๋วเครื่องบินตรงนี้ -->
+                            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Flight Booking Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </div>
                     </div>
-                    <ul class="text-sm text-gray-600 space-y-1">
-                        <li>❄️ <strong>Must Go:</strong> World of Frozen (Get Standby Pass ASAP)</li>
-                        <li>🏰 <strong>Castle:</strong> Photo ops at Castle of Magical Dreams</li>
-                        <li>🎢 <strong>Play:</strong> Enjoy rides & attractions all day</li>
-                    </ul>
                 </div>
-            </div>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-purple-200 flex items-center justify-center text-purple-500 shadow-md">
-                    <i class="fas fa-fireworks text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-purple-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-bold time-badge">20:30</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Momentous Night</h3>
+                <!-- Hotel -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="bg-teal-600 text-white px-5 py-3 flex justify-between items-center">
+                        <h3 class="font-bold"><i class="fas fa-hotel mr-2"></i>Accommodation (Joyce House)</h3>
+                        <span class="text-xs bg-teal-500 px-2 py-1 rounded">3 Nights</span>
                     </div>
-                    <p class="text-sm text-gray-600">Watch the spectacular fireworks <strong>"Momentous"</strong> at the castle.<br>
-                    <span class="text-xs text-red-500">*After the show, rush to MTR -> Exit at Jordan Station (Exit A)</span></p>
-                </div>
-            </div>
-
-            <div class="relative z-10 flex gap-4">
-                <div class="flex-none w-14 h-14 bg-purple-500 rounded-2xl border-4 border-purple-300 flex items-center justify-center text-white shadow-md">
-                    <i class="fas fa-drumstick-bite text-xl"></i>
-                </div>
-                <div class="bg-purple-100 p-4 rounded-2xl w-full card-shadow border border-purple-200">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-white text-purple-600 px-3 py-1 rounded-full text-xs font-bold time-badge">22:00</span>
-                        <h3 class="font-bold text-purple-800 text-lg">Late Night Eat (Jordan)</h3>
+                    <div class="p-5">
+                        <p class="font-bold text-lg mb-1">Joyce House (Tsim Sha Tsui)</p>
+                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2"></i>28 Feb - 3 Mar 2026</p>
+                        <div class="booking-placeholder p-0">
+                            <!-- ใส่รูปที่พักตรงนี้ -->
+                            <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotel Booking Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </div>
                     </div>
-                    <ul class="text-sm text-purple-900 space-y-2">
-                        <li>🥟 <strong>Dim Sum Here:</strong> Freshly steamed dim sum (Temple St., open late)</li>
-                        <li>🥣 <strong>Kai Kai Dessert:</strong> Michelin Guide Sesame Soup/Dumplings (Ning Po St.)</li>
-                    </ul>
                 </div>
-            </div>
 
-        </div>
-    </div>
+                <!-- Disney -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="bg-purple-600 text-white px-5 py-3 flex justify-between items-center">
+                        <h3 class="font-bold"><i class="fas fa-ticket mr-2"></i>Disneyland Tickets</h3>
+                        <span class="text-xs bg-purple-500 px-2 py-1 rounded">2 Tickets</span>
+                    </div>
+                    <div class="p-5">
+                        <p class="font-bold text-lg mb-1">Hong Kong Disneyland</p>
+                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2"></i>2 Mar 2026 (Tier 2)</p>
+                        <div class="space-y-4">
+                            <div class="booking-placeholder p-0 !min-h-[120px]">
+                                <!-- ใส่รูปตั๋วใบที่ 1 ตรงนี้ -->
+                                <img src="https://images.unsplash.com/photo-1571401834311-85f206e78864?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Disney Ticket 1 Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            <div class="booking-placeholder p-0 !min-h-[120px]">
+                                <!-- ใส่รูปตั๋วใบที่ 2 ตรงนี้ -->
+                                <img src="https://images.unsplash.com/photo-1505993597083-3bd19fd37e11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Disney Ticket 2 Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- DAY 4: ORANGE THEME -->
-    <div class="max-w-3xl mx-auto bg-white rounded-[2rem] overflow-hidden page-container transform -rotate-1 md:rotate-0">
-        <div class="bg-orange-500 p-6 md:p-8 text-white relative overflow-hidden">
-            <div class="absolute -right-2 -bottom-2 text-orange-400 opacity-50">
-                <i class="fas fa-suitcase-rolling text-9xl"></i>
-            </div>
-            <div class="relative z-10">
-                <span class="bg-white text-orange-600 px-3 py-1 rounded-full text-sm font-bold tracking-wider mb-2 inline-block shadow-sm">MONDAY</span>
-                <h1 class="text-4xl md:text-5xl font-bold mb-1 text-shadow">DAY 04</h1>
-                <p class="text-orange-100 text-lg handwritten">Cafe Hopping & Farewell Hong Kong</p>
             </div>
         </div>
-        
-        <div class="p-4 md:p-8 bg-orange-50 relative">
-            <div class="timeline-line border-orange-300"></div>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-orange-200 flex items-center justify-center text-orange-500 shadow-md">
-                    <i class="fas fa-bacon text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-orange-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-bold time-badge">09:00</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Wah Heung Yuen (華香園)</h3>
-                    </div>
-                    <p class="text-sm text-gray-600">
-                        <span class="tag tag-tip">Check-out First</span> Drop luggage at Joyce House<br>
-                        📍 <strong>Haiphong Road Market:</strong> Legendary Pork Chop Bun/Rice
-                    </p>
-                </div>
-            </div>
+    </main>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-orange-200 flex items-center justify-center text-orange-500 shadow-md">
-                    <i class="fas fa-camera-retro text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-orange-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-bold time-badge">10:45</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Kennedy Town</h3>
-                    </div>
-                    <ul class="text-sm text-gray-600 space-y-1">
-                        <li>☕ <strong>Cafe:</strong> % Arabica (Sea view), Winstons (Cinema theme)</li>
-                        <li>🏀 <strong>Photo:</strong> Basketball Court by the sea</li>
-                        <li>🥘 <strong>Lunch:</strong> Dim sum at Sun Hing (Golden Lava Bun)</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- Footer -->
+    <footer class="text-center text-slate-500 text-sm mt-10 pb-8">
+        <p>Created for Hong Kong Trip 2026</p>
+    </footer>
 
-            <div class="relative z-10 flex gap-4 mb-6">
-                <div class="flex-none w-14 h-14 bg-white rounded-2xl border-4 border-orange-200 flex items-center justify-center text-orange-500 shadow-md">
-                    <i class="fas fa-building text-xl"></i>
-                </div>
-                <div class="bg-white p-4 rounded-2xl w-full card-shadow border border-orange-100">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-bold time-badge">13:30+</span>
-                        <h3 class="font-bold text-gray-800 text-lg">City & Monster Mansion</h3>
-                    </div>
-                    <ul class="text-sm text-gray-600 space-y-1">
-                        <li>🚋 <strong>Tram Ride:</strong> Scenic ride to Wan Chai/Causeway Bay</li>
-                        <li>🏢 <strong>Monster Mansion:</strong> MTR Tai Koo Exit B (Transformers filming location)</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- JavaScript for Tabs -->
+    <script>
+        function showTab(tabId) {
+            // Hide all contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
 
-            <div class="relative z-10 flex gap-4">
-                <div class="flex-none w-14 h-14 bg-gray-800 rounded-2xl border-4 border-gray-600 flex items-center justify-center text-white shadow-md">
-                    <i class="fas fa-plane-departure text-xl"></i>
-                </div>
-                <div class="bg-gray-100 p-4 rounded-2xl w-full card-shadow border border-gray-200">
-                    <div class="flex items-center gap-2 mb-2">
-                        <span class="bg-white text-gray-800 px-3 py-1 rounded-full text-xs font-bold time-badge">17:15</span>
-                        <h3 class="font-bold text-gray-800 text-lg">Bye Hong Kong!</h3>
-                    </div>
-                    <div class="text-sm text-gray-600 space-y-2">
-                        <p>🧳 Luggage TST -> <span class="tag tag-transport">BUS A21</span> to Airport (60-70 mins)</p>
-                        <p>🍜 <strong>Dinner:</strong> Ho Hung Kee Wonton Noodles (Arrival Hall)</p>
-                        <p>✈️ <strong>HB295:</strong> 22:00 (Safe flight home)</p>
-                    </div>
-                </div>
-            </div>
+            // Reset all buttons
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(btn => {
+                if(btn.id === 'btn-bookings') {
+                    btn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 border border-amber-300';
+                } else {
+                    btn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200';
+                }
+            });
 
-        </div>
-    </div>
+            // Show selected content
+            document.getElementById(tabId).classList.remove('hidden');
 
+            // Style active button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if(tabId === 'bookings') {
+                activeBtn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-amber-500 text-white shadow-md border border-amber-600';
+            } else {
+                activeBtn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white shadow-md';
+            }
+        }
+    </script>
 </body>
 </html>
