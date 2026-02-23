@@ -45,6 +45,7 @@
             text-align: center;
             padding: 2rem;
             overflow: hidden;
+            position: relative;
         }
     </style>
 </head>
@@ -377,9 +378,24 @@
                                 <p class="text-slate-600">Flight: HB295</p>
                             </div>
                         </div>
-                        <div class="booking-placeholder p-0">
-                            <!-- ใส่รูปตั๋วเครื่องบินตรงนี้ -->
-                            <img src="1. airplane.jpg" alt="Flight Booking Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+
+                        <!-- NEW: 2 Columns for Flight Ticket & Passenger Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="booking-placeholder p-0 h-64 md:h-auto">
+                                <div class="absolute top-0 left-0 bg-slate-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
+                                    <i class="fas fa-qrcode mr-1"></i>Flight Booking
+                                </div>
+                                <!-- ใส่รูปตั๋วเครื่องบินตรงนี้ -->
+                                <img src="1. airplane.jpg" alt="Flight Booking Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
+                            
+                            <div class="booking-placeholder p-0 h-64 md:h-auto">
+                                <div class="absolute top-0 left-0 bg-slate-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
+                                    <i class="fas fa-users mr-1"></i>Passenger Details
+                                </div>
+                                <!-- ใส่รูปข้อมูลผู้โดยสารตรงนี้ -->
+                                <img src="5.passenger.jpg" alt="Passenger Details Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -393,9 +409,9 @@
                     <div class="p-5">
                         <p class="font-bold text-lg mb-1">Joyce House (Tsim Sha Tsui)</p>
                         <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2"></i>28 Feb - 3 Mar 2026</p>
-                        <div class="booking-placeholder p-0">
+                        <div class="booking-placeholder p-0 h-64 md:h-auto">
                             <!-- ใส่รูปที่พักตรงนี้ -->
-                            <img src="2.hotel.jpg" alt="Hotel Booking Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            <img src="2.hotel.jpg" alt="Hotel Booking Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
                         </div>
                     </div>
                 </div>
@@ -410,13 +426,15 @@
                         <p class="font-bold text-lg mb-1">Hong Kong Disneyland</p>
                         <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2"></i>2 Mar 2026 (Tier 2)</p>
                         <div class="space-y-4">
-                            <div class="booking-placeholder p-0 !min-h-[120px]">
+                            <div class="booking-placeholder p-0 h-48">
+                                <div class="absolute top-0 left-0 bg-purple-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 1</div>
                                 <!-- ใส่รูปตั๋วใบที่ 1 ตรงนี้ -->
-                                <img src="3.disney.jpg" alt="Disney Ticket 1 Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                                <img src="3.disney.jpg" alt="Disney Ticket 1 Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
                             </div>
-                            <div class="booking-placeholder p-0 !min-h-[120px]">
+                            <div class="booking-placeholder p-0 h-48">
+                                <div class="absolute top-0 left-0 bg-purple-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 2</div>
                                 <!-- ใส่รูปตั๋วใบที่ 2 ตรงนี้ -->
-                                <img src="4.disney.jpg" alt="Disney Ticket 2 Placeholder" class="w-full h-auto object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                                <img src="4.disney.jpg" alt="Disney Ticket 2 Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
                             </div>
                         </div>
                     </div>
@@ -465,4 +483,3 @@
     </script>
 </body>
 </html>
-
