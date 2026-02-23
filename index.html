@@ -6,6 +6,31 @@
     <title>Hong Kong Trip Planner | 4D3N</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Config for Hong Kong Flag Red -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hkred: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#E32118', /* Authentic Hong Kong Flag Red */
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <!-- Google Fonts: Kanit -->
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -14,15 +39,16 @@
     <style>
         body {
             font-family: 'Kanit', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f8fafc; /* Keep body clean white/gray to make red pop */
         }
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1529126667123-85f0b5d9bc37?auto=format&fit=crop&q=80&w=2000');
+            /* Hong Kong Red gradient overlay */
+            background-image: linear-gradient(rgba(227, 33, 24, 0.85), rgba(153, 27, 27, 0.9)), url('https://images.unsplash.com/photo-1529126667123-85f0b5d9bc37?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
         }
         .timeline-border {
-            border-left: 3px dashed #cbd5e1;
+            border-left: 3px dashed #fca5a5; /* Light Red Dashed Line */
             margin-left: 1.25rem;
         }
         .hide-scroll::-webkit-scrollbar {
@@ -33,14 +59,14 @@
             scrollbar-width: none;
         }
         .booking-placeholder {
-            background-color: #e2e8f0;
-            border: 2px dashed #94a3b8;
+            background-color: #fef2f2; /* Light red tint */
+            border: 2px dashed #fca5a5;
             border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 200px;
-            color: #475569;
+            color: #E32118;
             font-weight: 500;
             text-align: center;
             padding: 2rem;
@@ -52,21 +78,24 @@
 <body class="text-slate-800 pb-20">
 
     <!-- Hero Section -->
-    <header class="hero-bg text-white py-16 px-6 text-center shadow-lg">
-        <span class="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold tracking-wide uppercase shadow-sm">28 Feb - 3 Mar 2026</span>
-        <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-3">Hong Kong Trip 4D3N</h1>
-        <p class="text-lg text-slate-200 max-w-2xl mx-auto">Temple Hopping • Disneyland • Michelin Dining</p>
+    <header class="hero-bg text-white py-16 px-6 text-center shadow-lg relative">
+        <span class="bg-white text-hkred-600 px-4 py-1 rounded-full text-sm font-bold tracking-wide uppercase shadow-sm">28 Feb - 3 Mar 2026</span>
+        <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-3 flex items-center justify-center gap-3">
+            <i class="fab fa-canadian-maple-leaf opacity-80"></i> <!-- Bauhinia alternative icon -->
+            Hong Kong Trip 4D3N
+        </h1>
+        <p class="text-lg text-red-50 max-w-2xl mx-auto">Temple Hopping • Disneyland • Michelin Dining</p>
     </header>
 
     <!-- Navigation Tabs -->
-    <div class="sticky top-0 z-50 bg-white shadow-md">
+    <div class="sticky top-0 z-50 bg-white border-b border-hkred-100 shadow-sm">
         <div class="max-w-4xl mx-auto px-4">
             <div class="flex overflow-x-auto hide-scroll py-3 gap-2">
-                <button onclick="showTab('day1')" id="btn-day1" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white">Day 1</button>
-                <button onclick="showTab('day2')" id="btn-day2" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Day 2</button>
-                <button onclick="showTab('day3')" id="btn-day3" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Day 3</button>
-                <button onclick="showTab('day4')" id="btn-day4" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200">Day 4</button>
-                <button onclick="showTab('bookings')" id="btn-bookings" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 border border-amber-300"><i class="fas fa-ticket-alt mr-2"></i>Tickets & Bookings</button>
+                <button onclick="showTab('day1')" id="btn-day1" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-hkred-600 text-white shadow-md">Day 1</button>
+                <button onclick="showTab('day2')" id="btn-day2" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-hkred-50 text-hkred-700 hover:bg-hkred-100">Day 2</button>
+                <button onclick="showTab('day3')" id="btn-day3" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-hkred-50 text-hkred-700 hover:bg-hkred-100">Day 3</button>
+                <button onclick="showTab('day4')" id="btn-day4" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-hkred-50 text-hkred-700 hover:bg-hkred-100">Day 4</button>
+                <button onclick="showTab('bookings')" id="btn-bookings" class="tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-hkred-50 text-hkred-700 hover:bg-hkred-100"><i class="fas fa-ticket-alt mr-2"></i>Tickets & Bookings</button>
             </div>
         </div>
     </div>
@@ -77,7 +106,7 @@
         <!-- ================= DAY 1 ================= -->
         <div id="day1" class="tab-content animate-fade-in">
             <div class="flex items-center gap-3 mb-8">
-                <div class="bg-blue-100 text-blue-600 p-3 rounded-xl"><i class="fas fa-plane-arrival fa-xl"></i></div>
+                <div class="bg-hkred-100 text-hkred-600 p-3 rounded-xl"><i class="fas fa-plane-arrival fa-xl"></i></div>
                 <div>
                     <h2 class="text-2xl font-bold">Saturday, 28 Feb</h2>
                     <p class="text-slate-500">Temple Hopping & Foodie Adventure in Kowloon</p>
@@ -88,39 +117,39 @@
                 
                 <!-- Timeline Item -->
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-blue-600 block mb-1">05:35 - 08:30</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-suitcase-rolling mr-2 text-slate-400"></i>Landing & Check-in</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">05:35 - 08:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-suitcase-rolling mr-2 text-hkred-500"></i>Landing & Check-in</h3>
                         <p class="text-slate-600 text-sm leading-relaxed mb-2">Flight <strong>HB296</strong> arrives in Hong Kong at 05:35 AM.</p>
                         <ul class="text-sm text-slate-600 list-disc pl-5 space-y-1">
-                            <li>Take Bus <strong class="text-blue-600">A21</strong> to Stop 13 (Cameron Rd.)</li>
+                            <li>Take Bus <strong class="text-hkred-600">A21</strong> to Stop 13 (Cameron Rd.)</li>
                             <li>Drop luggage at <strong>Joyce House</strong> (Haiphong Mansion)</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-orange-600 block mb-1">08:30</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-bowl-rice mr-2 text-orange-400"></i>Breakfast: Master Congee</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">08:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-bowl-rice mr-2 text-hkred-500"></i>Breakfast: Master Congee</h3>
                         <p class="text-slate-600 text-sm">Fuel up with smooth liver congee and Chinese doughnut (5-7 min walk from hotel)</p>
                     </div>
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-red-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-red-600 block mb-1">09:30 - 12:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-vihara mr-2 text-red-400"></i>Temple Hopping (2 Famous Temples)</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">09:30 - 12:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-vihara mr-2 text-hkred-500"></i>Temple Hopping (2 Famous Temples)</h3>
                         <div class="space-y-3 mt-3">
                             <div class="bg-slate-50 p-3 rounded-lg text-sm border border-slate-100">
-                                <strong>1. Hung Hom Kwun Yum Temple</strong> (Pray for wealth/loan)<br>
+                                <strong class="text-hkred-700">1. Hung Hom Kwun Yum Temple</strong> (Pray for wealth/loan)<br>
                                 <span class="text-slate-500 text-xs"><i class="fas fa-train mr-1"></i>MTR Whampoa (Exit B)</span>
                             </div>
                             <div class="bg-slate-50 p-3 rounded-lg text-sm border border-slate-100">
-                                <strong>2. Wong Tai Sin Temple</strong> (Pray for blessings/red thread for love)<br>
+                                <strong class="text-hkred-700">2. Wong Tai Sin Temple</strong> (Pray for blessings/red thread for love)<br>
                                 <span class="text-slate-500 text-xs"><i class="fas fa-train mr-1"></i>MTR Wong Tai Sin (Exit B3)</span>
                             </div>
                         </div>
@@ -128,29 +157,29 @@
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-orange-600 block mb-1">12:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-utensils mr-2 text-orange-400"></i>Lunch: Tai Wai Area</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">12:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-utensils mr-2 text-hkred-500"></i>Lunch: Tai Wai Area</h3>
                         <p class="text-slate-600 text-sm">Restaurant 王牌・围一叉烧 famous for juicy Char Siu (BBQ Pork) and Crispy Pork</p>
                         <p class="text-slate-400 text-xs mt-1"><i class="fas fa-train mr-1"></i>MTR Tai Wai (Exit A)</p>
                     </div>
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-red-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-red-600 block mb-1">13:30</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-fan mr-2 text-red-400"></i>Che Kung Temple</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">13:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-fan mr-2 text-hkred-500"></i>Che Kung Temple</h3>
                         <p class="text-slate-600 text-sm">Spin the windmill 3 times to banish bad luck and bring good fortune (walking distance from lunch)</p>
                     </div>
                 </div>
 
                 <div class="relative pl-8">
-                    <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-indigo-600 block mb-1">16:00 Onwards</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-city mr-2 text-indigo-400"></i>Tsim Sha Tsui & Harbour View</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">16:00 Onwards</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-city mr-2 text-hkred-500"></i>Tsim Sha Tsui & Harbour View</h3>
                         <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
                             <li>Try Michelin pan-fried buns at <strong>Cheung Hing Kee</strong> (Lock Rd.)</li>
                             <li>Stroll along the <strong>Avenue of Stars</strong></li>
@@ -165,7 +194,7 @@
         <!-- ================= DAY 2 ================= -->
         <div id="day2" class="tab-content hidden animate-fade-in">
             <div class="flex items-center gap-3 mb-8">
-                <div class="bg-sky-100 text-sky-600 p-3 rounded-xl"><i class="fas fa-umbrella-beach fa-xl"></i></div>
+                <div class="bg-hkred-100 text-hkred-600 p-3 rounded-xl"><i class="fas fa-umbrella-beach fa-xl"></i></div>
                 <div>
                     <h2 class="text-2xl font-bold">Sunday, 1 Mar</h2>
                     <p class="text-slate-500">Baby Blessing & Hong Kong Island City Views</p>
@@ -174,21 +203,21 @@
 
             <div class="relative timeline-border pb-8">
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-orange-600 block mb-1">08:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-mug-hot mr-2 text-orange-400"></i>Breakfast: Hop Hing Noodle</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">08:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-mug-hot mr-2 text-hkred-500"></i>Breakfast: Hop Hing Noodle</h3>
                         <p class="text-slate-600 text-sm">Congee with minced pork and century egg (Code C02) - Fill up before a long trip!</p>
                     </div>
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-sky-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-sky-600 block mb-1">10:30</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-baby-carriage mr-2 text-sky-400"></i>Repulse Bay (Baby Blessing)</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">10:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-baby-carriage mr-2 text-hkred-500"></i>Repulse Bay (Baby Blessing)</h3>
                         <p class="text-slate-500 text-xs mb-3"><i class="fas fa-bus mr-1"></i>From Central, take Bus 6, 6X, or 260</p>
-                        <div class="bg-sky-50 p-3 rounded-lg text-sm border border-sky-100 text-sky-800">
+                        <div class="bg-hkred-50 p-3 rounded-lg text-sm border border-hkred-100 text-hkred-800">
                             <strong>Praying Tips:</strong> Pray to the Laughing Buddha<br>
                             - For a boy: Rub his belly<br>
                             - For a girl: Rub the child statue next to him<br>
@@ -198,10 +227,10 @@
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-pink-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-pink-600 block mb-1">12:30 - 15:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-camera mr-2 text-pink-400"></i>Central City Walk</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">12:30 - 15:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-camera mr-2 text-hkred-500"></i>Central City Walk</h3>
                         <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
                             <li><strong>Lunch:</strong> Giant prawn wonton noodles at <strong>Tsim Chai Kee</strong></li>
                             <li><strong>Snack:</strong> Famous Sourdough Egg Tart at <strong>Bakehouse</strong></li>
@@ -211,19 +240,19 @@
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-green-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-green-600 block mb-1">15:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-mountain mr-2 text-green-400"></i>Victoria Peak</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">15:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-mountain mr-2 text-hkred-500"></i>Victoria Peak</h3>
                         <p class="text-slate-600 text-sm">Take the Peak Tram for a panoramic view of Victoria Harbour. Recommended free viewpoint: Lion's Pavilion.</p>
                     </div>
                 </div>
 
                 <div class="relative pl-8">
-                    <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-indigo-600 block mb-1">17:00 Onwards</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-moon mr-2 text-indigo-400"></i>Evening Views & Dinner</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">17:00 Onwards</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-moon mr-2 text-hkred-500"></i>Evening Views & Dinner</h3>
                         <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
                             <li>Take the <strong>Star Ferry</strong> across the harbour during sunset</li>
                             <li>Take a Taxi to <strong>M+ Museum</strong> to photograph the LED facade</li>
@@ -238,7 +267,7 @@
         <!-- ================= DAY 3 ================= -->
         <div id="day3" class="tab-content hidden animate-fade-in">
             <div class="flex items-center gap-3 mb-8">
-                <div class="bg-purple-100 text-purple-600 p-3 rounded-xl"><i class="fab fa-fort-awesome fa-xl"></i></div>
+                <div class="bg-hkred-100 text-hkred-600 p-3 rounded-xl"><i class="fab fa-fort-awesome fa-xl"></i></div>
                 <div>
                     <h2 class="text-2xl font-bold">Monday, 2 Mar</h2>
                     <p class="text-slate-500">Disneyland Adventure & Late Night Dim Sum</p>
@@ -247,37 +276,37 @@
 
             <div class="relative timeline-border pb-8">
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-orange-600 block mb-1">08:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-bowl-food mr-2 text-orange-400"></i>Breakfast: Dragon Delight Kitchen</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">08:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-bowl-food mr-2 text-hkred-500"></i>Breakfast: Dragon Delight Kitchen</h3>
                         <p class="text-slate-600 text-sm">Have dim sum/congee near TST before heading to the park.</p>
                     </div>
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-purple-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-purple-600 block mb-1">09:00 - 21:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border-purple-200 border-2 hover:shadow-md transition relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-purple-100 rounded-bl-full -z-10"></div>
-                        <h3 class="font-bold text-xl mb-2 text-purple-700"><i class="fas fa-wand-magic-sparkles mr-2"></i>Hong Kong Disneyland</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">09:00 - 21:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border-hkred-200 border-2 hover:shadow-md transition relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-hkred-50 rounded-bl-full -z-10"></div>
+                        <h3 class="font-bold text-xl mb-2 text-hkred-700"><i class="fas fa-wand-magic-sparkles mr-2"></i>Hong Kong Disneyland</h3>
                         <p class="text-slate-500 text-xs mb-3"><i class="fas fa-train mr-1"></i>MTR Disneyland Resort Line</p>
                         <ul class="text-sm text-slate-700 list-disc pl-5 space-y-2 mb-4">
                             <li><strong>Highlight 1:</strong> New <strong>World of Frozen</strong> (Get Standby Pass on the app)</li>
                             <li><strong>Highlight 2:</strong> Photo ops at Castle of Magical Dreams</li>
                             <li><strong>Highlight 3:</strong> Watch <strong>"Momentous"</strong> Nighttime Spectacular at 20:30</li>
                         </ul>
-                        <div class="bg-red-50 text-red-600 p-2 rounded text-xs font-bold border border-red-100">
+                        <div class="bg-hkred-50 text-hkred-700 p-2 rounded text-xs font-bold border border-hkred-100">
                             <i class="fas fa-exclamation-circle mr-1"></i>After the fireworks, rush to the MTR and get off at Jordan Station (Exit A).
                         </div>
                     </div>
                 </div>
 
                 <div class="relative pl-8">
-                    <div class="absolute w-4 h-4 bg-indigo-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-indigo-600 block mb-1">22:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-dumpling mr-2 text-indigo-400"></i>Late Night Eats (Jordan)</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">22:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-dumpling mr-2 text-hkred-500"></i>Late Night Eats (Jordan)</h3>
                         <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
                             <li><strong>Savory:</strong> Freshly steamed dim sum at <strong>Dim Sum Here</strong> (Temple St.), open until 1 AM.</li>
                             <li><strong>Sweet:</strong> Walk 2 mins to <strong>Kai Kai Dessert</strong> for Michelin ginger sweet rice balls.</li>
@@ -290,7 +319,7 @@
         <!-- ================= DAY 4 ================= -->
         <div id="day4" class="tab-content hidden animate-fade-in">
             <div class="flex items-center gap-3 mb-8">
-                <div class="bg-amber-100 text-amber-600 p-3 rounded-xl"><i class="fas fa-camera-retro fa-xl"></i></div>
+                <div class="bg-hkred-100 text-hkred-600 p-3 rounded-xl"><i class="fas fa-camera-retro fa-xl"></i></div>
                 <div>
                     <h2 class="text-2xl font-bold">Tuesday, 3 Mar</h2>
                     <p class="text-slate-500">Cafe Hopping, Tram Ride & Farewell</p>
@@ -299,19 +328,19 @@
 
             <div class="relative timeline-border pb-8">
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-orange-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-orange-600 block mb-1">09:00</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-burger mr-2 text-orange-400"></i>Check-out & Legendary Pork Chop</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">09:00</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-burger mr-2 text-hkred-500"></i>Check-out & Legendary Pork Chop</h3>
                         <p class="text-slate-600 text-sm">Leave luggage at the hotel. Go eat the legendary pork chop bun/rice at <strong>Wah Heung Yuen</strong> in Haiphong Road Market.</p>
                     </div>
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-amber-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-amber-600 block mb-1">10:45</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-coffee mr-2 text-amber-400"></i>Cafe Hopping: Kennedy Town</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">10:45</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-coffee mr-2 text-hkred-500"></i>Cafe Hopping: Kennedy Town</h3>
                         <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
                             <li>Take photos at the seaside basketball court.</li>
                             <li>Coffee at <strong>% Arabica</strong> (Sea view) or <strong>Winstons Coffee</strong>.</li>
@@ -321,10 +350,10 @@
                 </div>
 
                 <div class="relative pl-8 mb-8">
-                    <div class="absolute w-4 h-4 bg-teal-500 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-teal-600 block mb-1">13:30</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-train-tram mr-2 text-teal-400"></i>Tram Ride & Monster Mansion</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">13:30</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-train-tram mr-2 text-hkred-500"></i>Tram Ride & Monster Mansion</h3>
                         <ul class="text-sm text-slate-600 list-disc pl-5 space-y-2">
                             <li>Take the Ding Ding Tram from Kennedy Town to experience the old city vibe.</li>
                             <li>Go to MTR Tai Koo (Exit B) to take photos at <strong>Monster Mansion</strong> (Transformers filming location) and the red escalators.</li>
@@ -333,12 +362,12 @@
                 </div>
 
                 <div class="relative pl-8">
-                    <div class="absolute w-4 h-4 bg-slate-800 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
-                    <span class="text-sm font-bold text-slate-800 block mb-1">17:15 Onwards</span>
-                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition bg-slate-50">
-                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-plane-departure mr-2 text-slate-600"></i>Departure</h3>
+                    <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
+                    <span class="text-sm font-bold text-hkred-600 block mb-1">17:15 Onwards</span>
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition bg-slate-50 hover:border-hkred-100">
+                        <h3 class="font-bold text-lg mb-2"><i class="fas fa-plane-departure mr-2 text-hkred-500"></i>Departure</h3>
                         <ul class="text-sm text-slate-600 space-y-3">
-                            <li>🧳 Pick up luggage at TST and take Bus <strong>A21</strong> to the Airport.</li>
+                            <li>🧳 Pick up luggage at TST and take Bus <strong class="text-hkred-600">A21</strong> to the Airport.</li>
                             <li>🍜 <strong>Dinner:</strong> Michelin wonton noodles at <strong>Ho Hung Kee</strong> (Airport Arrival Hall).</li>
                             <li>✈️ Return Flight: <strong>HB295</strong> (22:00). Have a safe flight back to Thailand!</li>
                         </ul>
@@ -350,7 +379,7 @@
         <!-- ================= BOOKINGS (New Section) ================= -->
         <div id="bookings" class="tab-content hidden animate-fade-in">
             <div class="flex items-center gap-3 mb-8">
-                <div class="bg-amber-100 text-amber-600 p-3 rounded-xl"><i class="fas fa-ticket-alt fa-xl"></i></div>
+                <div class="bg-hkred-100 text-hkred-600 p-3 rounded-xl"><i class="fas fa-ticket-alt fa-xl"></i></div>
                 <div>
                     <h2 class="text-2xl font-bold">Tickets & Bookings</h2>
                     <p class="text-slate-500">Flights, Accommodation and Disneyland</p>
@@ -361,9 +390,9 @@
                 
                 <!-- Flight -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden col-span-1 md:col-span-2">
-                    <div class="bg-slate-800 text-white px-5 py-3 flex justify-between items-center">
+                    <div class="bg-hkred-800 text-white px-5 py-3 flex justify-between items-center">
                         <h3 class="font-bold"><i class="fas fa-plane mr-2"></i>Flight Tickets (Greater Bay Airlines)</h3>
-                        <span class="text-xs bg-slate-600 px-2 py-1 rounded">Confirmed</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded">Confirmed</span>
                     </div>
                     <div class="p-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 text-sm">
@@ -379,22 +408,22 @@
                             </div>
                         </div>
 
-                        <!-- NEW: 2 Columns for Flight Ticket & Passenger Details -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="booking-placeholder p-0 h-64 md:h-auto">
-                                <div class="absolute top-0 left-0 bg-slate-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
+                        <!-- Layout adjusted for Flight & Passenger -->
+                        <div class="space-y-4">
+                            <div class="booking-placeholder p-0 h-[400px] md:h-[500px]">
+                                <div class="absolute top-0 left-0 bg-hkred-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
                                     <i class="fas fa-qrcode mr-1"></i>Flight Booking
                                 </div>
-                                <!-- ใส่รูปตั๋วเครื่องบินตรงนี้ -->
-                                <img src="1. airplane.jpg" alt="Flight Booking Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                                <!-- ใส่รูปตั๋วเครื่องบินตรงนี้ (แนวตั้ง) -->
+                                <img src="1. airplane.jpg" alt="Flight Booking Placeholder" class="w-full h-full object-cover">
                             </div>
                             
-                            <div class="booking-placeholder p-0 h-64 md:h-auto">
-                                <div class="absolute top-0 left-0 bg-slate-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
+                            <div class="booking-placeholder p-0 aspect-video w-full">
+                                <div class="absolute top-0 left-0 bg-hkred-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
                                     <i class="fas fa-users mr-1"></i>Passenger Details
                                 </div>
-                                <!-- ใส่รูปข้อมูลผู้โดยสารตรงนี้ -->
-                                <img src="5.passenger.jpg" alt="Passenger Details Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                                <!-- ใส่รูปข้อมูลผู้โดยสารตรงนี้ (แนวนอน) -->
+                                <img src="5.passenger.jpg" alt="Passenger Details Placeholder" class="w-full h-full object-cover">
                             </div>
                         </div>
                     </div>
@@ -402,39 +431,39 @@
 
                 <!-- Hotel -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div class="bg-teal-600 text-white px-5 py-3 flex justify-between items-center">
+                    <div class="bg-hkred-700 text-white px-5 py-3 flex justify-between items-center">
                         <h3 class="font-bold"><i class="fas fa-hotel mr-2"></i>Accommodation (Joyce House)</h3>
-                        <span class="text-xs bg-teal-500 px-2 py-1 rounded">3 Nights</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded">3 Nights</span>
                     </div>
                     <div class="p-5">
                         <p class="font-bold text-lg mb-1">Joyce House (Tsim Sha Tsui)</p>
-                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2"></i>28 Feb - 3 Mar 2026</p>
+                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2 text-hkred-500"></i>28 Feb - 3 Mar 2026</p>
                         <div class="booking-placeholder p-0 h-64 md:h-auto">
                             <!-- ใส่รูปที่พักตรงนี้ -->
-                            <img src="2.hotel.jpg" alt="Hotel Booking Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            <img src="2.hotel.jpg" alt="Hotel Booking Placeholder" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
 
                 <!-- Disney -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div class="bg-purple-600 text-white px-5 py-3 flex justify-between items-center">
+                    <div class="bg-hkred-600 text-white px-5 py-3 flex justify-between items-center">
                         <h3 class="font-bold"><i class="fas fa-ticket mr-2"></i>Disneyland Tickets</h3>
-                        <span class="text-xs bg-purple-500 px-2 py-1 rounded">2 Tickets</span>
+                        <span class="text-xs bg-white/20 px-2 py-1 rounded">2 Tickets</span>
                     </div>
                     <div class="p-5">
                         <p class="font-bold text-lg mb-1">Hong Kong Disneyland</p>
-                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2"></i>2 Mar 2026 (Tier 2)</p>
-                        <div class="space-y-4">
-                            <div class="booking-placeholder p-0 h-48">
-                                <div class="absolute top-0 left-0 bg-purple-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 1</div>
-                                <!-- ใส่รูปตั๋วใบที่ 1 ตรงนี้ -->
-                                <img src="3.disney.jpg" alt="Disney Ticket 1 Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2 text-hkred-500"></i>2 Mar 2026 (Tier 2)</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="booking-placeholder p-0 aspect-video w-full">
+                                <div class="absolute top-0 left-0 bg-hkred-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 1</div>
+                                <!-- ใส่รูปตั๋วใบที่ 1 ตรงนี้ (แนวนอน) -->
+                                <img src="3.disney.jpg" class="w-full h-full object-cover">
                             </div>
-                            <div class="booking-placeholder p-0 h-48">
-                                <div class="absolute top-0 left-0 bg-purple-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 2</div>
-                                <!-- ใส่รูปตั๋วใบที่ 2 ตรงนี้ -->
-                                <img src="4.disney.jpg" alt="Disney Ticket 2 Placeholder" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition duration-300">
+                            <div class="booking-placeholder p-0 aspect-video w-full">
+                                <div class="absolute top-0 left-0 bg-hkred-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 2</div>
+                                <!-- ใส่รูปตั๋วใบที่ 2 ตรงนี้ (แนวนอน) -->
+                                <img src="4.disney.jpg" alt="Disney Ticket 2 Placeholder" class="w-full h-full object-cover">
                             </div>
                         </div>
                     </div>
@@ -462,11 +491,7 @@
             // Reset all buttons
             const btns = document.querySelectorAll('.tab-btn');
             btns.forEach(btn => {
-                if(btn.id === 'btn-bookings') {
-                    btn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-amber-100 text-amber-700 hover:bg-amber-200 border border-amber-300';
-                } else {
-                    btn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200';
-                }
+                btn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-hkred-50 text-hkred-700 hover:bg-hkred-100';
             });
 
             // Show selected content
@@ -474,11 +499,7 @@
 
             // Style active button
             const activeBtn = document.getElementById('btn-' + tabId);
-            if(tabId === 'bookings') {
-                activeBtn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-amber-500 text-white shadow-md border border-amber-600';
-            } else {
-                activeBtn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-blue-600 text-white shadow-md';
-            }
+            activeBtn.className = 'tab-btn flex-shrink-0 px-6 py-2 rounded-full font-medium transition-colors bg-hkred-600 text-white shadow-md';
         }
     </script>
 </body>
