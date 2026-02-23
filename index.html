@@ -39,16 +39,15 @@
     <style>
         body {
             font-family: 'Kanit', sans-serif;
-            background-color: #f8fafc; /* Keep body clean white/gray to make red pop */
+            background-color: #f8fafc;
         }
         .hero-bg {
-            /* Hong Kong Red gradient overlay */
             background-image: linear-gradient(rgba(227, 33, 24, 0.85), rgba(153, 27, 27, 0.9)), url('https://images.unsplash.com/photo-1529126667123-85f0b5d9bc37?auto=format&fit=crop&q=80&w=2000');
             background-size: cover;
             background-position: center;
         }
         .timeline-border {
-            border-left: 3px dashed #fca5a5; /* Light Red Dashed Line */
+            border-left: 3px dashed #fca5a5;
             margin-left: 1.25rem;
         }
         .hide-scroll::-webkit-scrollbar {
@@ -59,17 +58,15 @@
             scrollbar-width: none;
         }
         .booking-placeholder {
-            background-color: #fef2f2; /* Light red tint */
+            background-color: #fef2f2;
             border: 2px dashed #fca5a5;
             border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 200px;
             color: #E32118;
             font-weight: 500;
             text-align: center;
-            padding: 2rem;
             overflow: hidden;
             position: relative;
         }
@@ -81,7 +78,7 @@
     <header class="hero-bg text-white py-16 px-6 text-center shadow-lg relative">
         <span class="bg-white text-hkred-600 px-4 py-1 rounded-full text-sm font-bold tracking-wide uppercase shadow-sm">28 Feb - 3 Mar 2026</span>
         <h1 class="text-4xl md:text-5xl font-bold mt-6 mb-3 flex items-center justify-center gap-3">
-            <i class="fab fa-canadian-maple-leaf opacity-80"></i> <!-- Bauhinia alternative icon -->
+            <i class="fab fa-canadian-maple-leaf opacity-80"></i>
             Hong Kong Trip 4D3N
         </h1>
         <p class="text-lg text-red-50 max-w-2xl mx-auto">Temple Hopping • Disneyland • Michelin Dining</p>
@@ -114,8 +111,6 @@
             </div>
 
             <div class="relative timeline-border pb-8">
-                
-                <!-- Timeline Item -->
                 <div class="relative pl-8 mb-8">
                     <div class="absolute w-4 h-4 bg-hkred-600 rounded-full -left-[9.5px] top-1 border-4 border-white shadow"></div>
                     <span class="text-sm font-bold text-hkred-600 block mb-1">05:35 - 08:30</span>
@@ -187,7 +182,6 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -386,84 +380,82 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 gap-6">
                 
-                <!-- Flight -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden col-span-1 md:col-span-2">
-                    <div class="bg-hkred-800 text-white px-5 py-3 flex justify-between items-center">
-                        <h3 class="font-bold"><i class="fas fa-plane mr-2"></i>Flight Tickets (Greater Bay Airlines)</h3>
-                        <span class="text-xs bg-white/20 px-2 py-1 rounded">Confirmed</span>
-                    </div>
-                    <div class="p-5">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 text-sm">
-                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
-                                <p class="text-slate-500 mb-1">Departure (28 Feb)</p>
-                                <p class="font-bold text-lg">BKK 01:40 <i class="fas fa-arrow-right text-slate-400 mx-2 text-sm"></i> 05:35 HKG</p>
-                                <p class="text-slate-600">Flight: HB296</p>
+                <!-- === ROW 1: Flight & Hotel (แนวตั้งคู่กัน) === -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Flight Card (Left Column) -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden h-full">
+                        <div class="bg-hkred-800 text-white px-5 py-3 flex justify-between items-center">
+                            <h3 class="font-bold"><i class="fas fa-plane mr-2"></i>Flight Tickets</h3>
+                        </div>
+                        <div class="p-5 flex flex-col h-[calc(100%-3rem)]">
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 mb-2">
+                                <p class="text-slate-500 text-xs mb-1">Departure (28 Feb)</p>
+                                <p class="font-bold text-sm">BKK 01:40 <i class="fas fa-arrow-right text-slate-400 mx-1 text-xs"></i> 05:35 HKG</p>
                             </div>
-                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
-                                <p class="text-slate-500 mb-1">Return (3 Mar)</p>
-                                <p class="font-bold text-lg">HKG 22:00 <i class="fas fa-arrow-right text-slate-400 mx-2 text-sm"></i> 23:59 BKK</p>
-                                <p class="text-slate-600">Flight: HB295</p>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 mb-4">
+                                <p class="text-slate-500 text-xs mb-1">Return (3 Mar)</p>
+                                <p class="font-bold text-sm">HKG 22:00 <i class="fas fa-arrow-right text-slate-400 mx-1 text-xs"></i> 23:59 BKK</p>
+                            </div>
+                            <!-- รูปตั๋วเครื่องบิน -->
+                            <div class="booking-placeholder p-0 mt-auto">
+                                <img src="1. airplane.jpg" alt="Flight Booking Placeholder" class="w-full h-auto block">
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Layout adjusted for Flight & Passenger -->
-                        <div class="space-y-4">
-                            <div class="booking-placeholder p-0 h-[400px] md:h-[500px]">
-                                <div class="absolute top-0 left-0 bg-hkred-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
-                                    <i class="fas fa-qrcode mr-1"></i>Flight Booking
-                                </div>
-                                <!-- ใส่รูปตั๋วเครื่องบินตรงนี้ (แนวตั้ง) -->
-                                <img src="1. airplane.jpg" alt="Flight Booking Placeholder" class="w-full h-full object-cover">
+                    <!-- Hotel Card (Right Column) -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden h-full">
+                        <div class="bg-hkred-700 text-white px-5 py-3 flex justify-between items-center">
+                            <h3 class="font-bold"><i class="fas fa-hotel mr-2"></i>Accommodation</h3>
+                        </div>
+                        <div class="p-5 flex flex-col h-[calc(100%-3rem)]">
+                            <p class="font-bold text-lg mb-1">Joyce House</p>
+                            <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2 text-hkred-500"></i>28 Feb - 3 Mar 2026</p>
+                            <!-- รูปที่พัก -->
+                            <div class="booking-placeholder p-0 mt-auto">
+                                <img src="2.hotel.jpg" alt="Hotel Booking Placeholder" class="w-full h-auto block">
                             </div>
-                            
-                            <div class="booking-placeholder p-0 aspect-video w-full">
-                                <div class="absolute top-0 left-0 bg-hkred-800 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">
-                                    <i class="fas fa-users mr-1"></i>Passenger Details
-                                </div>
-                                <!-- ใส่รูปข้อมูลผู้โดยสารตรงนี้ (แนวนอน) -->
-                                <img src="5.passenger.jpg" alt="Passenger Details Placeholder" class="w-full h-full object-cover">
-                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- === ROW 2: Passenger Details (แนวนอนเต็มจอ) === -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden w-full">
+                    <div class="bg-slate-800 text-white px-5 py-3 flex justify-between items-center">
+                        <h3 class="font-bold"><i class="fas fa-users mr-2"></i>Passenger Details</h3>
+                    </div>
+                    <div class="p-5">
+                        <!-- รูป Passenger Details -->
+                        <div class="booking-placeholder p-0 w-full">
+                            <img src="5.passenger.jpg" alt="Passenger Details Placeholder" class="w-full h-auto block">
                         </div>
                     </div>
                 </div>
 
-                <!-- Hotel -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div class="bg-hkred-700 text-white px-5 py-3 flex justify-between items-center">
-                        <h3 class="font-bold"><i class="fas fa-hotel mr-2"></i>Accommodation (Joyce House)</h3>
-                        <span class="text-xs bg-white/20 px-2 py-1 rounded">3 Nights</span>
-                    </div>
-                    <div class="p-5">
-                        <p class="font-bold text-lg mb-1">Joyce House (Tsim Sha Tsui)</p>
-                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2 text-hkred-500"></i>28 Feb - 3 Mar 2026</p>
-                        <div class="booking-placeholder p-0 h-64 md:h-auto">
-                            <!-- ใส่รูปที่พักตรงนี้ -->
-                            <img src="2.hotel.jpg" alt="Hotel Booking Placeholder" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Disney -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                <!-- === ROW 3: Disney Land Tickets (แนวนอนเต็มจอ) === -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden w-full">
                     <div class="bg-hkred-600 text-white px-5 py-3 flex justify-between items-center">
                         <h3 class="font-bold"><i class="fas fa-ticket mr-2"></i>Disneyland Tickets</h3>
-                        <span class="text-xs bg-white/20 px-2 py-1 rounded">2 Tickets</span>
                     </div>
                     <div class="p-5">
-                        <p class="font-bold text-lg mb-1">Hong Kong Disneyland</p>
-                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2 text-hkred-500"></i>2 Mar 2026 (Tier 2)</p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="booking-placeholder p-0 aspect-video w-full">
-                                <div class="absolute top-0 left-0 bg-hkred-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 1</div>
-                                <!-- ใส่รูปตั๋วใบที่ 1 ตรงนี้ (แนวนอน) -->
-                                <img src="3.disney.jpg" class="w-full h-full object-cover">
+                        <p class="font-bold text-lg mb-1">Hong Kong Disneyland (Tier 2)</p>
+                        <p class="text-sm text-slate-600 mb-4"><i class="far fa-calendar-alt mr-2 text-hkred-500"></i>2 Mar 2026</p>
+                        
+                        <div class="space-y-6">
+                            <!-- ตั๋วใบที่ 1 (เรียงแนวนอนเต็มจอ) -->
+                            <div class="booking-placeholder p-0 w-full relative">
+                                <div class="absolute top-0 right-0 bg-hkred-600 text-white px-4 py-1 rounded-bl-lg text-sm font-bold z-10 shadow">Ticket 1</div>
+                                <img src="3.disney.jpg" alt="Disney Ticket 1 Placeholder" class="w-full h-auto block">
                             </div>
-                            <div class="booking-placeholder p-0 aspect-video w-full">
-                                <div class="absolute top-0 left-0 bg-hkred-600 text-white px-3 py-1 rounded-br-lg text-xs font-bold z-10 shadow">Ticket 2</div>
-                                <!-- ใส่รูปตั๋วใบที่ 2 ตรงนี้ (แนวนอน) -->
-                                <img src="4.disney.jpg" alt="Disney Ticket 2 Placeholder" class="w-full h-full object-cover">
+
+                            <!-- ตั๋วใบที่ 2 (เรียงแนวนอนเต็มจอ) -->
+                            <div class="booking-placeholder p-0 w-full relative">
+                                <div class="absolute top-0 right-0 bg-hkred-600 text-white px-4 py-1 rounded-bl-lg text-sm font-bold z-10 shadow">Ticket 2</div>
+                                <img src="4.disney.jpg" alt="Disney Ticket 2 Placeholder" class="w-full h-auto block">
                             </div>
                         </div>
                     </div>
